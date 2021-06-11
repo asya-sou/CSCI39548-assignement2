@@ -9,14 +9,18 @@ Array.prototype.myEach = function (callb,thisArg) {
 };
 
 //--------------- TESTING ForEach ---------------//
+/*
 //test callback function (concsole log renamed)
-//function print(object) {
-//    console.log(object);
-//};
+function print(object) {
+    console.log(object);
+};
+
 //test array
-//let words = ["dog", "plant", "cat"];
+let words = ["dog", "plant", "cat"];
+
 //test myEach
-//words.myEach(print);
+words.myEach(print);
+*/
 //----------------------------------------------//
 
 
@@ -34,20 +38,22 @@ Array.prototype.myMap = function(callb, thisArg) {
 };
 
 //--------------- TESTING MyMap ---------------//
+/*
 //test callback function (adds 2 to a number)
-//function plusplus(yourNumber) {
-//    let newNum = yourNumber +2;
-//    return newNum;
-//};
+function plusplus(yourNumber) {
+    let newNum = yourNumber +2;
+    return newNum;
+};
 
 //test arrays
-//var test = [1, 2, 3, 4];
+var test = [1, 2, 3, 4];
 
 //test myMap
-//var newNumbers = test.myMap(plusplus);//set new array to myMap output
-//console.log(test.myMap(plusplus)); //test printing returned array
-//console.log(newNumbers);//test array set to myMap output array
-//console.log(test); //check if old array stayed the same
+var newNumbers = test.myMap(plusplus);//set new array to myMap output
+console.log(test.myMap(plusplus)); //test printing returned array
+console.log(newNumbers);//test array set to myMap output array
+console.log(test); //check if old array stayed the same
+*/
 //----------------------------------------------//
 
 
@@ -66,19 +72,21 @@ Array.prototype.myFilter = function(callb, thisArg) {
 
 
 //--------------- TESTING myFilter ---------------//
+/*
 //test callback function (adds 2 to a number)
-//function twoMore(yourNumber) {
-//    return (yourNumber >= 2);
-//};
+function twoMore(yourNumber) {
+    return (yourNumber >= 2);
+};
 
 //test arrays
-//var test = [1, 2, 3, 4];
+var test = [1, 2, 3, 4];
 
 //test myFilter
-//var newNumbers = test.myFilter(twoMore);//set new array to myFilter output
-//console.log(test.myFilter(twoMore)); //test printing returned array
-//console.log(newNumbers);//test array set to myMap output array
-//console.log(test); //check if old array stayed the same
+var newNumbers = test.myFilter(twoMore);//set new array to myFilter output
+console.log(test.myFilter(twoMore)); //test printing returned array
+console.log(newNumbers);//test array set to myMap output array
+console.log(test); //check if old array stayed the same
+*/
 //----------------------------------------------//
 
 
@@ -86,7 +94,13 @@ Array.prototype.myFilter = function(callb, thisArg) {
 // will take in an array of elements
 //returns true if at least one element passes callback specs
 Array.prototype.mySome = function() {
-
+    var truth = false; //set truth to true untill callb fails 
+    for(let i=0; i < this.length; i++){
+        if(!(callb(this[i], i, this))) { //if at least one pass function specs
+           truth = true; //return value will be true
+        }
+    }
+    return truth; //return the truth
 };
 
 // EVERY //
@@ -94,7 +108,13 @@ Array.prototype.mySome = function() {
 //returns true if all elements pass callback specs
 
 Array.prototype.myEvery = function() {
-
+    var truth = true; //set truth to true untill callb fails 
+    for(let i=0; i < this.length; i++){
+        if(!(callb(this[i], i, this))) { //if at least one doesn't  pass function specs
+           truth = false; //return value will be false
+        }
+    }
+    return truth; //return the truth
 };
 
 // REDUCE //
