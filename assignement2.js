@@ -1,10 +1,10 @@
 // FOR EACH //
 // will take in an array of elements
 // execute any callback function on each of those elements
-Array.prototype.myEach = function (callb) {
+Array.prototype.myEach = function (callb,thisArg) {
 
     for (let i = 0; i < this.length; i++) { //for the length of the array
-        callb(this[i]); //implement callb function
+        callb(this[i], i, this); //implement callb function
     }
 };
 
@@ -24,7 +24,7 @@ Array.prototype.myEach = function (callb) {
 // will take in an array of elements
 // execute any callback function on each of those elements
 // callback output is in a new array
-Array.prototype.myMap = function(callb, thisValue) {
+Array.prototype.myMap = function(callb, thisArg) {
     let outputArr = []; //create array for callback output
 
     for (let i = 0; i < this.length; i++){ //for the length of the array
