@@ -73,7 +73,7 @@ Array.prototype.myFilter = function(callb, thisArg) {
 
 //--------------- TESTING myFilter ---------------//
 /*
-//test callback function (adds 2 to a number)
+//test callback function (checks if number >=2)
 function twoMore(yourNumber) {
     return (yourNumber >= 2);
 };
@@ -84,7 +84,7 @@ var test = [1, 2, 3, 4];
 //test myFilter
 var newNumbers = test.myFilter(twoMore);//set new array to myFilter output
 console.log(test.myFilter(twoMore)); //test printing returned array
-console.log(newNumbers);//test array set to myMap output array
+console.log(newNumbers);//test array set to myFilter output array
 console.log(test); //check if old array stayed the same
 */
 //----------------------------------------------//
@@ -93,7 +93,7 @@ console.log(test); //check if old array stayed the same
 // SOME //
 // will take in an array of elements
 //returns true if at least one element passes callback specs
-Array.prototype.mySome = function() {
+Array.prototype.mySome = function(callb) {
     var truth = false; //set truth to true untill callb fails 
     for(let i=0; i < this.length; i++){
         if(!(callb(this[i], i, this))) { //if at least one pass function specs
@@ -103,19 +103,57 @@ Array.prototype.mySome = function() {
     return truth; //return the truth
 };
 
+
+//--------------- TESTING mySome ---------------//
+/*
+//test callback function (checks if number >=2)
+function twoMore(yourNumber) {
+    return (yourNumber >= 2);
+};
+
+//test arrays
+var test = [1, 2, 3, 4];
+
+//test mySome
+var newNumbers = test.mySome(twoMore);//set new array to mySome output
+console.log(test.mySome(twoMore)); //test printing returned value (true)
+console.log(newNumbers);//test array set to mySome bool (true)
+console.log(test); //check if old array stayed the same
+*/
+//----------------------------------------------//
+
 // EVERY //
 // will take in an array of elements
 //returns true if all elements pass callback specs
 
-Array.prototype.myEvery = function() {
+Array.prototype.myEvery = function(callb) {
     var truth = true; //set truth to true untill callb fails 
     for(let i=0; i < this.length; i++){
-        if(!(callb(this[i], i, this))) { //if at least one doesn't  pass function specs
+        if(! (callb(this[i], i, this)) ) { //if at least one doesn't  pass function specs
            truth = false; //return value will be false
         }
     }
     return truth; //return the truth
 };
+
+//--------------- TESTING myEvery ---------------//
+/*
+//test callback function (checks if number >=2)
+function twoMore(yourNumber) {
+    return (yourNumber >= 2);
+};
+
+//test arrays
+var test = [1, 2, 3, 4];
+
+//test myEvery
+var newNumbers = test.myEvery(twoMore);//set new array to mySome output
+console.log(test.myEvery(twoMore)); //test printing returned value (false)
+console.log(newNumbers);//test array set to mySome bool (false)
+console.log(test); //check if old array stayed the same
+*/
+//----------------------------------------------//
+
 
 // REDUCE //
 // will take in an array of elements
