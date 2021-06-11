@@ -52,9 +52,35 @@ Array.prototype.myMap = function(callb, thisValue) {
 
 
 // FILTER //
-Array.prototype.myFilter = function() {
-
+// will take in an array of elements
+//create a new array with elements that pass callback function
+Array.prototype.myFilter = function(callb, thisArg) {
+    let outputArr = [];
+    for(let i=0; i < this.length; i++){
+        if(callb(this[i], i, this)) { //if passes function specs
+            outputArr.push(this[i]); //add to new array
+        }
+    }
+    return outputArr; //return array
 };
+
+
+//--------------- TESTING myFilter ---------------//
+//test callback function (adds 2 to a number)
+//function twoMore(yourNumber) {
+//    return (yourNumber >= 2);
+//};
+
+//test arrays
+//var test = [1, 2, 3, 4];
+
+//test myFilter
+//var newNumbers = test.myFilter(twoMore);//set new array to myFilter output
+//console.log(test.myFilter(twoMore)); //test printing returned array
+//console.log(newNumbers);//test array set to myMap output array
+//console.log(test); //check if old array stayed the same
+//----------------------------------------------//
+
 
 // SOME //
 Array.prototype.mySome = function() {
