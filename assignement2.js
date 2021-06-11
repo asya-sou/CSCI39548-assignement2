@@ -8,9 +8,16 @@ Array.prototype.myEach = function (callb) {
     }
 };
 
-const words = ["dog", "plant", "cat"];
-words.myEach(console.log);
-
+//--------------- TESTING ForEach ---------------//
+//test callback function (concsole log renamed)
+//function print(object) {
+//    console.log(object);
+//};
+//test array
+//const words = ["dog", "plant", "cat"];
+//test myEach
+//words.myEach(print);
+//----------------------------------------------//
 
 
 // MAP //
