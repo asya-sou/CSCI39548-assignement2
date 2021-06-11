@@ -1,7 +1,24 @@
 // FOR EACH //
-Array.prototype.myEach = function() {
+// will take in an array of elements
+// execute any callback function on each of those elements
+Array.prototype.myEach = function (callb) {
 
+    for (let i = 0; i < this.length; i++) { //for the length of the array
+        callb(this[i]); //implement callb function
+    }
 };
+
+//--------------- TESTING ForEach ---------------//
+//test callback function (concsole log renamed)
+//function print(object) {
+//    console.log(object);
+//};
+//test array
+//const words = ["dog", "plant", "cat"];
+//test myEach
+//words.myEach(print);
+//----------------------------------------------//
+
 
 // MAP //
 Array.prototype.myMap = function() {
