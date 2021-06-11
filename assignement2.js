@@ -83,46 +83,70 @@ Array.prototype.myFilter = function(callb, thisArg) {
 
 
 // SOME //
+// will take in an array of elements
+//returns true if at least one element passes callback specs
 Array.prototype.mySome = function() {
 
 };
 
 // EVERY //
+// will take in an array of elements
+//returns true if all elements pass callback specs
+
 Array.prototype.myEvery = function() {
 
 };
 
 // REDUCE //
+// will take in an array of elements
+// cuts array to single value
+// value based on callb
+// accumulator - single return value
 Array.prototype.myReduce = function() {
 
 };
 
 // INCLUDES //
+// will take in an array of elements
+// checks if it contains a value
 Array.prototype.myIncludes = function() {
 
 };
 
 // INDEXOF //
+// will take in an array of elements
+// returns first i @ which a given element is found
+// returns -1 if not present
 Array.prototype.myIndexOf = function() {
 
 };
 
 // PUSH //
+// will take in an array of elements
+// adds element(s) to the array
+// returns updated length
 Array.prototype.myPush = function() {
 
 };
 
 // LASTINDEXOF //
+// will take in an array of elements
+// returns last i @ which a given element is found
+// returns -1 if not present
 Array.prototype.myLastIndexOf = function() {
 
 };
 
 // KEYS //
+// will take in an object
+// returns an array of enumerable properties of the obj.
 Object.grabKeys = function() {
 
 };
 
 // VALUES //
+// will take in an object
+// returns an array of values of enumerable properties
 Object.grabValues = function() {
 
 };
