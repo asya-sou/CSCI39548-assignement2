@@ -160,9 +160,44 @@ console.log(test); //check if old array stayed the same
 // cuts array to single value
 // value based on callb
 // accumulator - single return value
-Array.prototype.myReduce = function() {
+//TODO
+// if array empty and no initialValue - typeError
+// if initialValue provided, accumulator initially set to it 
+Array.prototype.myReduce = function(callb, initialValue) {
+    if (this.length >= 1){
+    var accumulator = (initialValue === undefined)? null : initialValue;
+    
 
+        for (let i = 0; i < this.length; i++){
+
+            if (accumulator !== undefined){
+            accumulator = callb( accumulator, this[i], i, this);
+            }
+
+        }
+    }
+    return accumulator;
 };
+
+//--------------- TESTING myReduce ---------------//
+/*
+//test callback function (sum of elements + 2 * #elements)
+//accumulator - accum value prev. retyurned by the callback (starts at initialValue)
+//currValue - element on which operation is done
+function twoMore(accumulator, currValue) {
+    return accumulator + currValue + 2;
+};
+
+//test array
+var test = [1, 2, 3, 4];
+
+//test myReduce
+var newNumber = test.myReduce(twoMore);//set new variable to myReduce output
+console.log(test.myReduce(twoMore)); //test printing returned value (18)
+console.log(newNumber);//test array set to myReduce accum (18)
+console.log(test); //check if old array stayed the same
+*/
+//----------------------------------------------//
 
 // INCLUDES //
 // will take in an array of elements
