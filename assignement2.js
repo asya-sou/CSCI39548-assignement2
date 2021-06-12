@@ -160,13 +160,12 @@ console.log(test); //check if old array stayed the same
 // cuts array to single value
 // value based on callb
 // accumulator - single return value
-//TODO
+//TODO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 // if array empty and no initialValue - typeError
 // if initialValue provided, accumulator initially set to it 
 Array.prototype.myReduce = function(callb, initialValue) {
     if (this.length >= 1){
-    var accumulator = (initialValue === undefined)? null : initialValue;
-    
+        var accumulator = (initialValue === undefined)? null : initialValue;
 
         for (let i = 0; i < this.length; i++){
 
@@ -202,10 +201,38 @@ console.log(test); //check if old array stayed the same
 // INCLUDES //
 // will take in an array of elements
 // checks if it contains a value
-Array.prototype.myIncludes = function() {
+//TODO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//if array empty - error
+//if fromIndex > this.length - error
+Array.prototype.myIncludes = function(callb, fromIndex) {
+    var truth = false; //if no value
+    if (this.length >= 1){
+        let i = (fromIndex === undefined)? 0 : fromIndex;
 
+        for (i; i < this.length; i++) {
+            truth = (callb === this[i])? true : truth;
+            console.log(this[i]);
+            console.log(callb);
+
+        }
+    }
+
+    return truth;
 };
 
+//--------------- TESTING myIncludes ---------------//
+/*
+//test array
+const numbers = [1, 2, 3, 4, 5, 6];
+const words = ['cat','dog','plant']; 
+
+//test myIncludes
+console.log(numbers.myIncludes(1, 2)); //test printing returned value (false)
+console.log(numbers.myIncludes(6, 4)); //test printing returned value (true)
+console.log(words.myIncludes(7)); //test printing returned value (false)
+console.log(words.myIncludes('cat')); //test printing returned value (true)
+*/
+//----------------------------------------------//
 // INDEXOF //
 // will take in an array of elements
 // returns first i @ which a given element is found
