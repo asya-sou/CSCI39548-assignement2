@@ -211,8 +211,6 @@ Array.prototype.myIncludes = function(callb, fromIndex) {
 
         for (i; i < this.length; i++) {
             truth = (callb === this[i])? true : truth;
-            console.log(this[i]);
-            console.log(callb);
 
         }
     }
@@ -233,12 +231,26 @@ console.log(words.myIncludes(7)); //test printing returned value (false)
 console.log(words.myIncludes('cat')); //test printing returned value (true)
 */
 //----------------------------------------------//
+
+
 // INDEXOF //
 // will take in an array of elements
 // returns first i @ which a given element is found
 // returns -1 if not present
-Array.prototype.myIndexOf = function() {
+Array.prototype.myIndexOf = function(callb, fromIndex) {
+    var index = -1; //if no value
+    if (this.length >= 1){
+        let i = (fromIndex === undefined)? 0 : fromIndex;
 
+        for (i; i < this.length; i++) {
+            index = (callb === this[i])? i : index;
+            console.log(this[i]);
+            console.log(callb);
+
+        }
+    }
+
+    return truth;
 };
 
 // PUSH //
