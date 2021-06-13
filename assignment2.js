@@ -363,5 +363,28 @@ console.log(Object.grabKeys(myKeychain));//check myKeys ([ 'round', 'pentagon', 
 // will take in an object
 // returns an array of values of enumerable properties
 Object.grabValues = function() {
+    let valueArr = []; //create an array to return
 
+    for (var prop in obj) { // for every property/key in the object
+        if (obj.hasOwnProperty(prop)){ //if object has a property
+            valueArr.push(object[prop]); //add property value to the array
+        }
+    }
+    return valueArr;
 };
+
+//--------------- TESTING grabValues ---------------//
+//keychain object with round, pentagon, rectangle,numberKeys proeprties/keys
+
+const myKeychain = {
+    round: 'apartment',
+    pentagon: 'bldng',
+    rectangle: 'mailbox',
+    numberKeys: 3,
+    empty: null
+};
+
+//test original values
+console.log(Object.values(myKeychain)); //check original values ([ 'apartment', 'bldng', 'mailbox', 3, null ])
+console.log(Object.grabKeys(myKeychain));//check myValues ([ 'apartment', 'bldng', 'mailbox', 3, null ])
+//----------------------------------------------//
