@@ -275,9 +275,23 @@ console.log(words.myIndexOf('cat')); //find the cat (0)
 // returns updated length
 // relies on a length property to determine where to start inserting
 // If the length property cannot be converted into a number, the index used is 0
+//CAN PUSH MULTIOLE ELEMENTS
 Array.prototype.myPush = function() {
-
+    console.log(arguments[0]);
+    console.log(arguments[1]);
 };
+
+//--------------- TESTING myPush ---------------//
+
+//test array
+const numbers = [1, 2, 3];
+const words = ['cat','dog','plant']; 
+
+//test myPush
+numbers.myPush(3, 3, 3);
+
+//----------------------------------------------//
+
 
 // LASTINDEXOF //
 // will take in an array of elements
