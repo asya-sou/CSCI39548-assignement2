@@ -1,12 +1,16 @@
 // FOR EACH //
 // will take in an array of elements
 // execute any callback function on each of those elements
+// ERROR: empty array
 Array.prototype.myEach = function (callb,thisArg) {
-
+    //if length is 0 - throw empty array error
+    if(this.length === 0) throw "Array is empty";
+    
     for (let i = 0; i < this.length; i++) { //for the length of the array
         callb(this[i], i, this); //implement callb function
     }
 };
+
 
 //--------------- TESTING ForEach ---------------//
 /*
@@ -15,11 +19,21 @@ function print(object) {
     console.log(object);
 };
 
-//test array
+//test arrays
 let words = ["dog", "plant", "cat"];
+let nothingness = [];
 
 //test myEach
 words.myEach(print);
+
+//test null/undefined array
+//nothingness.myEach(print); //empty
+//nothingnes.Each(print); //ORIGINAL
+//notdefined.myEach(print); //undefined
+//notdefined.Each(print); //ORIGINAL
+
+//test callb that is not a function
+words.myEach('Dog');
 */
 //----------------------------------------------//
 
@@ -28,7 +42,11 @@ words.myEach(print);
 // will take in an array of elements
 // execute any callback function on each of those elements
 // callback output is in a new array
+// ERROR: empty array
 Array.prototype.myMap = function(callb, thisArg) {
+    //if length is 0 - throw empty array error
+    if(this.length === 0) throw "Array is empty";
+
     let outputArr = []; //create array for callback output
 
     for (let i = 0; i < this.length; i++){ //for the length of the array
@@ -59,14 +77,20 @@ console.log(test); //check if old array stayed the same
 
 // FILTER //
 // will take in an array of elements
-//create a new array with elements that pass callback function
+// create a new array with elements that pass callback function
+// ERROR: empty array
+
 Array.prototype.myFilter = function(callb, thisArg) {
-    let outputArr = [];
+    //if length is 0 - throw empty array error
+    if(this.length === 0) throw "Array is empty";
+
+    let outputArr = [];//create output array
     for(let i=0; i < this.length; i++){
         if(callb(this[i], i, this)) { //if passes function specs
             outputArr.push(this[i]); //add to new array
         }
     }
+
     return outputArr; //return array
 };
 
@@ -89,11 +113,14 @@ console.log(test); //check if old array stayed the same
 */
 //----------------------------------------------//
 
-
 // SOME //
 // will take in an array of elements
-//returns true if at least one element passes callback specs
+// returns true if at least one element passes callback specs
+// ERROR: empty array
 Array.prototype.mySome = function(callb) {
+    //if length is 0 - throw empty array error
+    if(this.length === 0) throw "Array is empty";
+
     var truth = false; //set truth to true untill callb fails 
     for(let i=0; i < this.length; i++){
         if(!(callb(this[i], i, this))) { //if at least one pass function specs
@@ -102,7 +129,6 @@ Array.prototype.mySome = function(callb) {
     }
     return truth; //return the truth
 };
-
 
 //--------------- TESTING mySome ---------------//
 /*
@@ -125,8 +151,11 @@ console.log(test); //check if old array stayed the same
 // EVERY //
 // will take in an array of elements
 //returns true if all elements pass callback specs
-
+// ERROR: empty array
 Array.prototype.myEvery = function(callb) {
+    //if length is 0 - throw empty array error
+    if(this.length === 0) throw "Array is empty";
+
     var truth = true; //set truth to true untill callb fails 
     for(let i=0; i < this.length; i++){
         if(! (callb(this[i], i, this)) ) { //if at least one doesn't  pass function specs
@@ -160,21 +189,18 @@ console.log(test); //check if old array stayed the same
 // cuts array to single value
 // value based on callb
 // accumulator - single return value
-//TODO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-// if array empty and no initialValue - typeError
-// if initialValue provided, accumulator initially set to it 
+// ERROR: empty array
 Array.prototype.myReduce = function(callb, initialValue) {
-    if (this.length >= 1){
-        var accumulator = (initialValue === undefined)? null : initialValue;
-
-        for (let i = 0; i < this.length; i++){
-
-            if (accumulator !== undefined){
-            accumulator = callb( accumulator, this[i], i, this);
-            }
-
-        }
+    //if length is 0 - throw empty array error
+    if(this.length === 0) throw "Array is empty";
+    
+    // if initialValue provided, accumulator initially set to it 
+    var accumulator = (initialValue === undefined)? null : initialValue;
+    
+    for (let i = 0; i < this.length; i++){
+        accumulator = callb( accumulator, this[i], i, this); //updated acc value
     }
+
     return accumulator;
 };
 
@@ -201,18 +227,21 @@ console.log(test); //check if old array stayed the same
 // INCLUDES //
 // will take in an array of elements
 // checks if it contains a value
-//TODO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-//if array empty - error
-//if fromIndex > this.length - error
+// ERROR: empty array
+// ERROR: if fromIndex > this.length - error
+
 Array.prototype.myIncludes = function(callb, fromIndex) {
-    var truth = false; //if no value
-    if (this.length >= 1){
-        let i = (fromIndex === undefined)? 0 : fromIndex;
-
-        for (i; i < this.length; i++) {
-            truth = (callb === this[i])? true : truth;
-
-        }
+    //if length is 0 - throw empty array error
+    if(this.length === 0) throw "Array is empty";
+    //if fromIndex > this.length - error
+    if(fromIndex !== undefined && this.length < fromIndex.Index) throw "fromIndex is out of range, please check array size";
+    
+    var truth = false; //truth inisially set to "does not contain"
+    
+    // if fromIndex value provided, start at fromIndex (set i)
+    let i = (fromIndex === undefined)? 0 : fromIndex;
+    for (i; i < this.length; i++) {
+        truth = (callb === this[i])? true : truth; //if element found - true, otherwise stay false
     }
 
     return truth;
@@ -237,17 +266,19 @@ console.log(words.myIncludes('cat')); //test printing returned value (true)
 // will take in an array of elements
 // returns first i @ which a given element is found
 // returns -1 if not present
+// ERROR: empty array
 Array.prototype.myIndexOf = function(callb, fromIndex) {
-    if (this.length >= 1){ //if array not empty
-        let i = (fromIndex === undefined)? 0 : fromIndex; //starting Index is fromIndex if provided
+    //if length is 0 - throw empty array error
+    if(this.length === 0) throw "Array is empty";
 
-        for (i; i < this.length; i++) {
-            if (callb === this[i]) //if callb value found -
-                return i; // return first index where it is found
-        }
-    return -1; //if not present
+    // if fromIndex value provided, start at fromIndex (set i)
+    let i = (fromIndex === undefined)? 0 : fromIndex; //starting Index is fromIndex if provided
+    for (i; i < this.length; i++) {
+        if (callb === this[i]) //if callb value found -
+            return i; // return first index where it is found
     }
 
+    return -1; //if not present
 };
 
 //--------------- TESTING myIndexOf ---------------//
@@ -314,14 +345,16 @@ console.log(numbers.push());//check reg. push empty reactions
 // will take in an array of elements
 // returns last i @ which a given element is found
 // returns -1 if not present
+// ERROR: empty array
 Array.prototype.myLastIndexOf = function() {
-    var index = -1; //if no value
-    if (this.length >= 1){
-        let i = (fromIndex === undefined)? 0 : fromIndex;
+    //if length is 0 - throw empty array error
+    if(this.length === 0) throw "Array is empty";
 
-        for (i; i < this.length; i++) {
-            index = (callb === this[i])? i : index; //if found - set return value to index where found
-        }
+    var index = -1; //if no value
+    let i = (fromIndex === undefined)? 0 : fromIndex;
+
+    for (i; i < this.length; i++) {
+        index = (callb === this[i])? i : index; //if found - set return value to index where found
     }
 
     return index;
@@ -331,8 +364,11 @@ Array.prototype.myLastIndexOf = function() {
 // KEYS //
 // will take in an object
 // returns an array of enumerable properties of the obj.
-// ERROR: non-object passed
+// ERROR: non-object or number is passed OR no properties
 Object.grabKeys = function(obj) {
+    //non-object or number is passed
+    if(typeof obj !== 'object' || isNaN(obj)) throw "passed argument is not an object or has no properties";
+
     let keyArr = []; //create an array to return
 
     for (var prop in obj) { // for every property/key in the object
@@ -344,8 +380,8 @@ Object.grabKeys = function(obj) {
 };
 
 //--------------- TESTING grabKeys ---------------//
-//keychain object with round, pentagon, rectangle,numberKeys proeprties/keys
 /*
+//keychain object with round, pentagon, rectangle,numberKeys proeprties/keys
 const myKeychain = {
     round: 'apartment',
     pentagon: 'bldng',
@@ -353,16 +389,28 @@ const myKeychain = {
     numberKeys: 3
 };
 
+const nothingness = {};//empty object
+
 //test original keys
 console.log(Object.keys(myKeychain)); //check original keys ([ 'round', 'pentagon', 'rectangle', 'numberKeys' ])
 console.log(Object.grabKeys(myKeychain));//check myKeys ([ 'round', 'pentagon', 'rectangle', 'numberKeys' ])
+
+//pass non-object or number
+console.log(Object.keys(5));
+console.log(Object.keys('dog'));
+//pass object with no properties
+console.log(Object.keys(nothingness));
 */
 //----------------------------------------------//
 
 // VALUES //
 // will take in an object
 // returns an array of values of enumerable properties
-Object.grabValues = function() {
+// ERROR: non-object or number is passed OR no properties
+Object.grabValues = function(obj) {
+    //non-object or number is passed
+    if(typeof obj !== 'object' || isNaN(obj)) throw "passed argument is not an object or has no properties";
+    
     let valueArr = []; //create an array to return
 
     for (var prop in obj) { // for every property/key in the object
@@ -374,8 +422,8 @@ Object.grabValues = function() {
 };
 
 //--------------- TESTING grabValues ---------------//
+/*
 //keychain object with round, pentagon, rectangle,numberKeys proeprties/keys
-
 const myKeychain = {
     round: 'apartment',
     pentagon: 'bldng',
@@ -387,4 +435,5 @@ const myKeychain = {
 //test original values
 console.log(Object.values(myKeychain)); //check original values ([ 'apartment', 'bldng', 'mailbox', 3, null ])
 console.log(Object.grabKeys(myKeychain));//check myValues ([ 'apartment', 'bldng', 'mailbox', 3, null ])
+*/
 //----------------------------------------------//
