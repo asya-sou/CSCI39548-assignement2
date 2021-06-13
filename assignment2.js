@@ -1,19 +1,11 @@
 // FOR EACH //
 // will take in an array of elements
 // execute any callback function on each of those elements
-// ERROR: callb not a function
-// ERROR: empty or undefined array
+// ERROR: empty array
 Array.prototype.myEach = function (callb,thisArg) {
-/*______________ array errors ______________*/
-
-    var message = '';
     //if length is 0 - throw empty array error
     if(this.length === 0) throw "Array is empty";
-    //try { nothingness.myEach(print); }
-    //catch(err) { console.error(err); }
     
-/*______________ function implementation ______________*/
-
     for (let i = 0; i < this.length; i++) { //for the length of the array
         callb(this[i], i, this); //implement callb function
     }
@@ -21,7 +13,7 @@ Array.prototype.myEach = function (callb,thisArg) {
 
 
 //--------------- TESTING ForEach ---------------//
-
+/*
 //test callback function (concsole log renamed)
 function print(object) {
     console.log(object);
@@ -36,10 +28,13 @@ words.myEach(print);
 
 //test null/undefined array
 //nothingness.myEach(print); //empty
-//nothingnes.Each(print);
+//nothingnes.Each(print); //ORIGINAL
 //notdefined.myEach(print); //undefined
-notdefined.Each(print); //undefined
+//notdefined.Each(print); //ORIGINAL
 
+//test callb that is not a function
+words.myEach('Dog');
+*/
 //----------------------------------------------//
 
 
@@ -47,7 +42,11 @@ notdefined.Each(print); //undefined
 // will take in an array of elements
 // execute any callback function on each of those elements
 // callback output is in a new array
+// ERROR: empty array
 Array.prototype.myMap = function(callb, thisArg) {
+    //if length is 0 - throw empty array error
+    if(this.length === 0) throw "Array is empty";
+
     let outputArr = []; //create array for callback output
 
     for (let i = 0; i < this.length; i++){ //for the length of the array
@@ -78,8 +77,13 @@ console.log(test); //check if old array stayed the same
 
 // FILTER //
 // will take in an array of elements
-//create a new array with elements that pass callback function
+// create a new array with elements that pass callback function
+// ERROR: empty array
+
 Array.prototype.myFilter = function(callb, thisArg) {
+    //if length is 0 - throw empty array error
+    if(this.length === 0) throw "Array is empty";
+
     let outputArr = [];
     for(let i=0; i < this.length; i++){
         if(callb(this[i], i, this)) { //if passes function specs
@@ -112,7 +116,11 @@ console.log(test); //check if old array stayed the same
 // SOME //
 // will take in an array of elements
 //returns true if at least one element passes callback specs
+// ERROR: empty array
 Array.prototype.mySome = function(callb) {
+    //if length is 0 - throw empty array error
+    if(this.length === 0) throw "Array is empty";
+
     var truth = false; //set truth to true untill callb fails 
     for(let i=0; i < this.length; i++){
         if(!(callb(this[i], i, this))) { //if at least one pass function specs
@@ -144,8 +152,11 @@ console.log(test); //check if old array stayed the same
 // EVERY //
 // will take in an array of elements
 //returns true if all elements pass callback specs
-
+// ERROR: empty array
 Array.prototype.myEvery = function(callb) {
+    //if length is 0 - throw empty array error
+    if(this.length === 0) throw "Array is empty";
+
     var truth = true; //set truth to true untill callb fails 
     for(let i=0; i < this.length; i++){
         if(! (callb(this[i], i, this)) ) { //if at least one doesn't  pass function specs
@@ -179,10 +190,13 @@ console.log(test); //check if old array stayed the same
 // cuts array to single value
 // value based on callb
 // accumulator - single return value
+// ERROR: empty array
 //TODO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-// if array empty and no initialValue - typeError
 // if initialValue provided, accumulator initially set to it 
 Array.prototype.myReduce = function(callb, initialValue) {
+    //if length is 0 - throw empty array error
+    if(this.length === 0) throw "Array is empty";
+    
     if (this.length >= 1){
         var accumulator = (initialValue === undefined)? null : initialValue;
 
@@ -220,10 +234,14 @@ console.log(test); //check if old array stayed the same
 // INCLUDES //
 // will take in an array of elements
 // checks if it contains a value
+// ERROR: empty array
 //TODO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-//if array empty - error
 //if fromIndex > this.length - error
+
 Array.prototype.myIncludes = function(callb, fromIndex) {
+    //if length is 0 - throw empty array error
+    if(this.length === 0) throw "Array is empty";
+
     var truth = false; //if no value
     if (this.length >= 1){
         let i = (fromIndex === undefined)? 0 : fromIndex;
@@ -256,17 +274,18 @@ console.log(words.myIncludes('cat')); //test printing returned value (true)
 // will take in an array of elements
 // returns first i @ which a given element is found
 // returns -1 if not present
+// ERROR: empty array
 Array.prototype.myIndexOf = function(callb, fromIndex) {
-    if (this.length >= 1){ //if array not empty
-        let i = (fromIndex === undefined)? 0 : fromIndex; //starting Index is fromIndex if provided
+    //if length is 0 - throw empty array error
+    if(this.length === 0) throw "Array is empty";
 
-        for (i; i < this.length; i++) {
-            if (callb === this[i]) //if callb value found -
-                return i; // return first index where it is found
-        }
-    return -1; //if not present
+    let i = (fromIndex === undefined)? 0 : fromIndex; //starting Index is fromIndex if provided
+    for (i; i < this.length; i++) {
+        if (callb === this[i]) //if callb value found -
+            return i; // return first index where it is found
     }
 
+    return -1; //if not present
 };
 
 //--------------- TESTING myIndexOf ---------------//
@@ -333,14 +352,16 @@ console.log(numbers.push());//check reg. push empty reactions
 // will take in an array of elements
 // returns last i @ which a given element is found
 // returns -1 if not present
+// ERROR: empty array
 Array.prototype.myLastIndexOf = function() {
-    var index = -1; //if no value
-    if (this.length >= 1){
-        let i = (fromIndex === undefined)? 0 : fromIndex;
+    //if length is 0 - throw empty array error
+    if(this.length === 0) throw "Array is empty";
 
-        for (i; i < this.length; i++) {
-            index = (callb === this[i])? i : index; //if found - set return value to index where found
-        }
+    var index = -1; //if no value
+    let i = (fromIndex === undefined)? 0 : fromIndex;
+
+    for (i; i < this.length; i++) {
+        index = (callb === this[i])? i : index; //if found - set return value to index where found
     }
 
     return index;
@@ -363,8 +384,8 @@ Object.grabKeys = function(obj) {
 };
 
 //--------------- TESTING grabKeys ---------------//
-//keychain object with round, pentagon, rectangle,numberKeys proeprties/keys
 /*
+//keychain object with round, pentagon, rectangle,numberKeys proeprties/keys
 const myKeychain = {
     round: 'apartment',
     pentagon: 'bldng',
@@ -393,8 +414,8 @@ Object.grabValues = function() {
 };
 
 //--------------- TESTING grabValues ---------------//
-//keychain object with round, pentagon, rectangle,numberKeys proeprties/keys
 /*
+//keychain object with round, pentagon, rectangle,numberKeys proeprties/keys
 const myKeychain = {
     round: 'apartment',
     pentagon: 'bldng',
