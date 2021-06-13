@@ -244,13 +244,32 @@ Array.prototype.myIndexOf = function(callb, fromIndex) {
 
         for (i; i < this.length; i++) {
             index = (callb === this[i])? i : index;
-            console.log(this[i]);
-            console.log(callb);
+            //console.log(this[i]);
+            //console.log(callb);
         }
     }
 
-    return truth;
+    return index;
 };
+
+//--------------- TESTING myIndexOf ---------------//
+/*
+//test array
+const numbers = [1, 2, 3, 4, 5, 6];
+const words = ['cat','dog','plant']; 
+
+//test myIndexOf
+console.log(numbers.myIndexOf(3)); //test index of 3 (2)
+console.log(numbers.myIndexOf(8)); //test index of 8 (-1)
+console.log(numbers.myIndexOf(2, 3)); //test index of 2 from 3 (-1)
+console.log(numbers.myIndexOf(2, 1)); //test index of 2 from 1 (1)
+
+console.log(words.myIndexOf(7)); //test if includes number (-1)
+console.log(words.myIndexOf('cat')); //find the cat (0)
+*/
+//----------------------------------------------//
+
+
 
 // PUSH //
 // will take in an array of elements
