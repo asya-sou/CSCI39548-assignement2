@@ -363,7 +363,14 @@ console.log(Object.grabKeys(myKeychain));//check myKeys ([ 'round', 'pentagon', 
 // will take in an object
 // returns an array of values of enumerable properties
 Object.grabValues = function() {
+    let valueArr = []; //create an array to return
 
+    for (var prop in obj) { // for every property/key in the object
+        if (obj.hasOwnProperty(prop)){ //if object has a property
+            valueArr.push(object[prop]); //add property value to the array
+        }
+    }
+    return valueArr;
 };
 
 //--------------- TESTING grabValues ---------------//
