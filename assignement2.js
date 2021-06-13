@@ -246,7 +246,6 @@ Array.prototype.myIndexOf = function(callb, fromIndex) {
             index = (callb === this[i])? i : index;
             console.log(this[i]);
             console.log(callb);
-
         }
     }
 
