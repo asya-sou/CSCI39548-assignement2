@@ -364,8 +364,11 @@ Array.prototype.myLastIndexOf = function() {
 // KEYS //
 // will take in an object
 // returns an array of enumerable properties of the obj.
-// ERROR: non-object passed
+// ERROR: non-object or number is passed
 Object.grabKeys = function(obj) {
+    //non-object or number is passed
+    if(typeof obj !== 'object' || isNaN(obj)) throw "passed argument is not an object";
+
     let keyArr = []; //create an array to return
 
     for (var prop in obj) { // for every property/key in the object
@@ -385,17 +388,24 @@ const myKeychain = {
     rectangle: 'mailbox',
     numberKeys: 3
 };
-
 //test original keys
 console.log(Object.keys(myKeychain)); //check original keys ([ 'round', 'pentagon', 'rectangle', 'numberKeys' ])
 console.log(Object.grabKeys(myKeychain));//check myKeys ([ 'round', 'pentagon', 'rectangle', 'numberKeys' ])
+
+//pass non-object or number
+console.log(Object.keys(5));
+console.log(Object.keys('dog'));
 */
 //----------------------------------------------//
 
 // VALUES //
 // will take in an object
 // returns an array of values of enumerable properties
-Object.grabValues = function() {
+// ERROR: non-object or number is passed
+Object.grabValues = function(obj) {
+    //non-object or number is passed
+    if(typeof obj !== 'object' || isNaN(obj)) throw "passed argument is not an object";
+    
     let valueArr = []; //create an array to return
 
     for (var prop in obj) { // for every property/key in the object
