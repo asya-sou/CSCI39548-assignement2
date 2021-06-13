@@ -364,10 +364,10 @@ Array.prototype.myLastIndexOf = function() {
 // KEYS //
 // will take in an object
 // returns an array of enumerable properties of the obj.
-// ERROR: non-object or number is passed
+// ERROR: non-object or number is passed OR no properties
 Object.grabKeys = function(obj) {
     //non-object or number is passed
-    if(typeof obj !== 'object' || isNaN(obj)) throw "passed argument is not an object";
+    if(typeof obj !== 'object' || isNaN(obj)) throw "passed argument is not an object or has no properties";
 
     let keyArr = []; //create an array to return
 
@@ -388,6 +388,9 @@ const myKeychain = {
     rectangle: 'mailbox',
     numberKeys: 3
 };
+
+const nothingness = {};//empty object
+
 //test original keys
 console.log(Object.keys(myKeychain)); //check original keys ([ 'round', 'pentagon', 'rectangle', 'numberKeys' ])
 console.log(Object.grabKeys(myKeychain));//check myKeys ([ 'round', 'pentagon', 'rectangle', 'numberKeys' ])
@@ -395,16 +398,18 @@ console.log(Object.grabKeys(myKeychain));//check myKeys ([ 'round', 'pentagon', 
 //pass non-object or number
 console.log(Object.keys(5));
 console.log(Object.keys('dog'));
+//pass object with no properties
+console.log(Object.keys(nothingness));
 */
 //----------------------------------------------//
 
 // VALUES //
 // will take in an object
 // returns an array of values of enumerable properties
-// ERROR: non-object or number is passed
+// ERROR: non-object or number is passed OR no properties
 Object.grabValues = function(obj) {
     //non-object or number is passed
-    if(typeof obj !== 'object' || isNaN(obj)) throw "passed argument is not an object";
+    if(typeof obj !== 'object' || isNaN(obj)) throw "passed argument is not an object or has no properties";
     
     let valueArr = []; //create an array to return
 
