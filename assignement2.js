@@ -288,7 +288,7 @@ Array.prototype.myPush = function() {
 };
 
 //--------------- TESTING myPush ---------------//
-
+/*
 //test array
 let numbers = [1, 2, 3];
 let words = ['cat','dog','plant']; 
@@ -301,6 +301,12 @@ console.log(nothingness.myPush('food', 'social media',)); //fill nothingness, pr
 
 console.log(nothingness.myPush());//check empty push (2)
 console.log(nothingness);//still checking empty push results (['food', 'social media'])
+
+console.log(numbers.myPush("mix"));// add 'mix' to number & print new length(7)
+console.log(numbers); //print new numbers
+
+console.log(numbers.push());//check reg. push empty reactions
+*/
 //----------------------------------------------//
 
 
