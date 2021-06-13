@@ -251,7 +251,7 @@ Array.prototype.myIndexOf = function(callb, fromIndex) {
 };
 
 //--------------- TESTING myIndexOf ---------------//
-
+/*
 //test array
 const numbers = [1, 2, 3, 4, 5, 6, 3];
 const words = ['cat','dog','plant']; 
@@ -264,7 +264,7 @@ console.log(numbers.myIndexOf(2, 1)); //test index of 2 from 1 (1)
 
 console.log(words.myIndexOf(7)); //test if includes number (-1)
 console.log(words.myIndexOf('cat')); //find the cat (0)
-
+*/
 //----------------------------------------------//
 
 
@@ -273,6 +273,8 @@ console.log(words.myIndexOf('cat')); //find the cat (0)
 // will take in an array of elements
 // adds element(s) to the array
 // returns updated length
+// relies on a length property to determine where to start inserting
+// If the length property cannot be converted into a number, the index used is 0
 Array.prototype.myPush = function() {
 
 };
