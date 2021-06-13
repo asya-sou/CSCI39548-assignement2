@@ -211,8 +211,6 @@ Array.prototype.myIncludes = function(callb, fromIndex) {
 
         for (i; i < this.length; i++) {
             truth = (callb === this[i])? true : truth;
-            console.log(this[i]);
-            console.log(callb);
 
         }
     }
@@ -233,13 +231,43 @@ console.log(words.myIncludes(7)); //test printing returned value (false)
 console.log(words.myIncludes('cat')); //test printing returned value (true)
 */
 //----------------------------------------------//
+
+
 // INDEXOF //
 // will take in an array of elements
 // returns first i @ which a given element is found
 // returns -1 if not present
-Array.prototype.myIndexOf = function() {
+Array.prototype.myIndexOf = function(callb, fromIndex) {
+    if (this.length >= 1){ //if array not empty
+        let i = (fromIndex === undefined)? 0 : fromIndex; //starting Index is fromIndex if provided
+
+        for (i; i < this.length; i++) {
+            if (callb === this[i]) //if callb value found -
+                return i; // return first index where it is found
+        }
+    return -1; //if not present
+    }
 
 };
+
+//--------------- TESTING myIndexOf ---------------//
+
+//test array
+const numbers = [1, 2, 3, 4, 5, 6, 3];
+const words = ['cat','dog','plant']; 
+
+//test myIndexOf
+console.log(numbers.myIndexOf(3)); //test index of 3 (2) (repeated value case)
+console.log(numbers.myIndexOf(8)); //test index of 8 (-1)
+console.log(numbers.myIndexOf(2, 3)); //test index of 2 from 3 (-1)
+console.log(numbers.myIndexOf(2, 1)); //test index of 2 from 1 (1)
+
+console.log(words.myIndexOf(7)); //test if includes number (-1)
+console.log(words.myIndexOf('cat')); //find the cat (0)
+
+//----------------------------------------------//
+
+
 
 // PUSH //
 // will take in an array of elements
@@ -254,7 +282,16 @@ Array.prototype.myPush = function() {
 // returns last i @ which a given element is found
 // returns -1 if not present
 Array.prototype.myLastIndexOf = function() {
+    var index = -1; //if no value
+    if (this.length >= 1){
+        let i = (fromIndex === undefined)? 0 : fromIndex;
 
+        for (i; i < this.length; i++) {
+            index = (callb === this[i])? i : index; //if found - set return value to index where found
+        }
+    }
+
+    return index;
 };
 
 // KEYS //
