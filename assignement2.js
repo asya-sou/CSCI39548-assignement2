@@ -327,12 +327,29 @@ Array.prototype.myLastIndexOf = function() {
     return index;
 };
 
+
+
 // KEYS //
 // will take in an object
 // returns an array of enumerable properties of the obj.
-Object.grabKeys = function() {
+// ERROR: non-object passed
+Object.grabKeys = function(obj) {
 
 };
+
+//--------------- TESTING grabKeys ---------------//
+//keychain object with round, pentagon, rectangle,numberKeys proeprties/keys
+const myKeychain = {
+    round: 'apartment',
+    pentagon: 'bldng',
+    rectangle: 'mailbox',
+    numberKeys: 3
+};
+
+//test original keys
+console.log(Object.keys(myKeychain));
+
+//----------------------------------------------//
 
 // VALUES //
 // will take in an object
