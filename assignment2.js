@@ -1,4 +1,4 @@
-// FOR EACH //
+//___________________ FOR EACH ___________________//
 // will take in an array of elements
 // execute any callback function on each of those elements
 // ERROR: empty array
@@ -11,7 +11,7 @@ Array.prototype.myEach = function (callb,thisArg) {
     }
 };
 
-// MAP //
+//___________________ MAP ___________________//
 // will take in an array of elements
 // execute any callback function on each of those elements
 // callback output is in a new array
@@ -28,7 +28,7 @@ Array.prototype.myMap = function(callb, thisArg) {
     return outputArr; //return new array
 };
 
-// FILTER //
+//___________________ FILTER ___________________//
 // will take in an array of elements
 // create a new array with elements that pass callback function
 // ERROR: empty array
@@ -46,7 +46,7 @@ Array.prototype.myFilter = function(callb, thisArg) {
     return outputArr; //return array
 };
 
-// SOME //
+//___________________ SOME ___________________//
 // will take in an array of elements
 // returns true if at least one element passes callback specs
 // ERROR: empty array
@@ -63,7 +63,7 @@ Array.prototype.mySome = function(callb) {
     return truth; //return the truth
 };
 
-// EVERY //
+//___________________ EVERY ___________________//
 // will take in an array of elements
 //returns true if all elements pass callback specs
 // ERROR: empty array
@@ -80,7 +80,7 @@ Array.prototype.myEvery = function(callb) {
     return truth; //return the truth
 };
 
-// REDUCE //
+//___________________ REDUCE ___________________//
 // will take in an array of elements
 // cuts array to single value
 // value based on callb
@@ -100,7 +100,7 @@ Array.prototype.myReduce = function(callb, initialValue) {
     return accumulator;
 };
 
-// INCLUDES //
+//___________________ INCLUDES ___________________//
 // will take in an array of elements
 // checks if it contains a value
 // ERROR: empty array
@@ -123,7 +123,7 @@ Array.prototype.myIncludes = function(callb, fromIndex) {
     return truth;
 };
 
-// INDEXOF //
+//___________________ INDEXOF ___________________//
 // will take in an array of elements
 // returns first i @ which a given element is found
 // returns -1 if not present
@@ -142,7 +142,7 @@ Array.prototype.myIndexOf = function(callb, fromIndex) {
     return -1; //if not present
 };
 
-// PUSH //
+//___________________ PUSH ___________________//
 // will take in an array of elements
 // adds element(s) to the array
 // returns updated length
@@ -160,7 +160,7 @@ Array.prototype.myPush = function() {
     return this.length;
 };
 
-// LASTINDEXOF //
+//___________________ LASTINDEXOF ___________________//
 // will take in an array of elements
 // returns last i @ which a given element is found
 // returns -1 if not present
@@ -180,7 +180,7 @@ Array.prototype.myLastIndexOf = function() {
 };
 
 
-// KEYS //
+//___________________ KEYS ___________________//
 // will take in an object
 // returns an array of enumerable properties of the obj.
 // ERROR: non-object or number is passed OR no properties
@@ -198,7 +198,7 @@ Object.grabKeys = function(obj) {
     return keyArr;
 };
 
-// VALUES //
+//___________________ VALUES___________________ //
 // will take in an object
 // returns an array of values of enumerable properties
 // ERROR: non-object or number is passed OR no properties
