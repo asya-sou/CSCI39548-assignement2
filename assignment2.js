@@ -84,12 +84,13 @@ Array.prototype.myFilter = function(callb, thisArg) {
     //if length is 0 - throw empty array error
     if(this.length === 0) throw "Array is empty";
 
-    let outputArr = [];
+    let outputArr = [];//create output array
     for(let i=0; i < this.length; i++){
         if(callb(this[i], i, this)) { //if passes function specs
             outputArr.push(this[i]); //add to new array
         }
     }
+
     return outputArr; //return array
 };
 
@@ -112,10 +113,9 @@ console.log(test); //check if old array stayed the same
 */
 //----------------------------------------------//
 
-
 // SOME //
 // will take in an array of elements
-//returns true if at least one element passes callback specs
+// returns true if at least one element passes callback specs
 // ERROR: empty array
 Array.prototype.mySome = function(callb) {
     //if length is 0 - throw empty array error
@@ -129,7 +129,6 @@ Array.prototype.mySome = function(callb) {
     }
     return truth; //return the truth
 };
-
 
 //--------------- TESTING mySome ---------------//
 /*
@@ -191,23 +190,17 @@ console.log(test); //check if old array stayed the same
 // value based on callb
 // accumulator - single return value
 // ERROR: empty array
-//TODO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-// if initialValue provided, accumulator initially set to it 
 Array.prototype.myReduce = function(callb, initialValue) {
     //if length is 0 - throw empty array error
     if(this.length === 0) throw "Array is empty";
     
-    if (this.length >= 1){
-        var accumulator = (initialValue === undefined)? null : initialValue;
-
-        for (let i = 0; i < this.length; i++){
-
-            if (accumulator !== undefined){
-            accumulator = callb( accumulator, this[i], i, this);
-            }
-
-        }
+    // if initialValue provided, accumulator initially set to it 
+    var accumulator = (initialValue === undefined)? null : initialValue;
+    
+    for (let i = 0; i < this.length; i++){
+        accumulator = callb( accumulator, this[i], i, this); //updated acc value
     }
+    
     return accumulator;
 };
 
