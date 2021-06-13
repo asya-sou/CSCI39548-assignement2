@@ -238,18 +238,16 @@ console.log(words.myIncludes('cat')); //test printing returned value (true)
 // returns first i @ which a given element is found
 // returns -1 if not present
 Array.prototype.myIndexOf = function(callb, fromIndex) {
-    var index = -1; //if no value
-    if (this.length >= 1){
-        let i = (fromIndex === undefined)? 0 : fromIndex;
+    if (this.length >= 1){ //if array not empty
+        let i = (fromIndex === undefined)? 0 : fromIndex; //starting Index is fromIndex if provided
 
         for (i; i < this.length; i++) {
-            index = (callb === this[i])? i : index;
-            //console.log(this[i]);
-            //console.log(callb);
+            if (callb === this[i]) //if callb value found -
+                return i; // return first index where it is found
         }
+    return -1; //if not present
     }
 
-    return index;
 };
 
 //--------------- TESTING myIndexOf ---------------//
@@ -284,7 +282,16 @@ Array.prototype.myPush = function() {
 // returns last i @ which a given element is found
 // returns -1 if not present
 Array.prototype.myLastIndexOf = function() {
+    var index = -1; //if no value
+    if (this.length >= 1){
+        let i = (fromIndex === undefined)? 0 : fromIndex;
 
+        for (i; i < this.length; i++) {
+            index = (callb === this[i])? i : index; //if found - set return value to index where found
+        }
+    }
+
+    return index;
 };
 
 // KEYS //
