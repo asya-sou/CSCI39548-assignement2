@@ -275,20 +275,24 @@ console.log(words.myIndexOf('cat')); //find the cat (0)
 // returns updated length
 // relies on a length property to determine where to start inserting
 // If the length property cannot be converted into a number, the index used is 0
-//CAN PUSH MULTIOLE ELEMENTS
+//CAN PUSH MULTIPOLE ELEMENTS
 Array.prototype.myPush = function() {
-    console.log(arguments[0]);
-    console.log(arguments[1]);
+    
+
+    return this.length;
 };
 
 //--------------- TESTING myPush ---------------//
 
 //test array
-const numbers = [1, 2, 3];
-const words = ['cat','dog','plant']; 
+let numbers = [1, 2, 3];
+let words = ['cat','dog','plant']; 
+let nothingness = [];//empty array
 
 //test myPush
-numbers.myPush(3, 3, 3);
+console.log(numbers.myPush(3, 3, 3));// add 3 x 3 & print new length(6)
+console.log(numbers); //print new numbers ([1, 2, 3, 3, 3, 3])
+console.log(nothingness.myPush('food', 'social media',)); //fill nothingness, print length (2)
 
 //----------------------------------------------//
 
