@@ -228,14 +228,15 @@ console.log(test); //check if old array stayed the same
 // will take in an array of elements
 // checks if it contains a value
 // ERROR: empty array
-//TODO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-//if fromIndex > this.length - error
+// ERROR: if fromIndex > this.length - error
 
 Array.prototype.myIncludes = function(callb, fromIndex) {
     //if length is 0 - throw empty array error
     if(this.length === 0) throw "Array is empty";
-
-    var truth = false; //if no value
+    //if fromIndex > this.length - error
+    if(fromIndex !== undefined && this.length < fromIndex.Index) throw "fromIndex is out of range, please check array size";
+    
+    var truth = false; //truth inisially set to "does not contain"
     
     // if fromIndex value provided, start at fromIndex (set i)
     let i = (fromIndex === undefined)? 0 : fromIndex;
@@ -270,6 +271,7 @@ Array.prototype.myIndexOf = function(callb, fromIndex) {
     //if length is 0 - throw empty array error
     if(this.length === 0) throw "Array is empty";
 
+    // if fromIndex value provided, start at fromIndex (set i)
     let i = (fromIndex === undefined)? 0 : fromIndex; //starting Index is fromIndex if provided
     for (i; i < this.length; i++) {
         if (callb === this[i]) //if callb value found -
