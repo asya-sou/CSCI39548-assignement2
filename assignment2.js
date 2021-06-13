@@ -375,7 +375,7 @@ Object.grabValues = function() {
 
 //--------------- TESTING grabValues ---------------//
 //keychain object with round, pentagon, rectangle,numberKeys proeprties/keys
-
+/*
 const myKeychain = {
     round: 'apartment',
     pentagon: 'bldng',
@@ -387,4 +387,5 @@ const myKeychain = {
 //test original values
 console.log(Object.values(myKeychain)); //check original values ([ 'apartment', 'bldng', 'mailbox', 3, null ])
 console.log(Object.grabKeys(myKeychain));//check myValues ([ 'apartment', 'bldng', 'mailbox', 3, null ])
+*/
 //----------------------------------------------//
