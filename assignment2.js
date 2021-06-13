@@ -1,26 +1,45 @@
 // FOR EACH //
 // will take in an array of elements
 // execute any callback function on each of those elements
+// ERROR: callb not a function
+// ERROR: empty or undefined array
 Array.prototype.myEach = function (callb,thisArg) {
+/*______________ array errors ______________*/
+
+    var message = '';
+    //if length is 0 - throw empty array error
+    if(this.length === 0) throw "Array is empty";
+    //try { nothingness.myEach(print); }
+    //catch(err) { console.error(err); }
+    
+/*______________ function implementation ______________*/
 
     for (let i = 0; i < this.length; i++) { //for the length of the array
         callb(this[i], i, this); //implement callb function
     }
 };
 
+
 //--------------- TESTING ForEach ---------------//
-/*
+
 //test callback function (concsole log renamed)
 function print(object) {
     console.log(object);
 };
 
-//test array
+//test arrays
 let words = ["dog", "plant", "cat"];
+let nothingness = [];
 
 //test myEach
 words.myEach(print);
-*/
+
+//test null/undefined array
+//nothingness.myEach(print); //empty
+//nothingnes.Each(print);
+//notdefined.myEach(print); //undefined
+notdefined.Each(print); //undefined
+
 //----------------------------------------------//
 
 
