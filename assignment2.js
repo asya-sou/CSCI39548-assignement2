@@ -200,7 +200,7 @@ Array.prototype.myReduce = function(callb, initialValue) {
     for (let i = 0; i < this.length; i++){
         accumulator = callb( accumulator, this[i], i, this); //updated acc value
     }
-    
+
     return accumulator;
 };
 
@@ -236,13 +236,11 @@ Array.prototype.myIncludes = function(callb, fromIndex) {
     if(this.length === 0) throw "Array is empty";
 
     var truth = false; //if no value
-    if (this.length >= 1){
-        let i = (fromIndex === undefined)? 0 : fromIndex;
-
-        for (i; i < this.length; i++) {
-            truth = (callb === this[i])? true : truth;
-
-        }
+    
+    // if fromIndex value provided, start at fromIndex (set i)
+    let i = (fromIndex === undefined)? 0 : fromIndex;
+    for (i; i < this.length; i++) {
+        truth = (callb === this[i])? true : truth; //if element found - true, otherwise stay false
     }
 
     return truth;
